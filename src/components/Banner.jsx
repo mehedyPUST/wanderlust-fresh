@@ -34,7 +34,7 @@ const Banner = () => {
 
                 <div>
                     <h3 className="text-sm">Date/Duration</h3>
-                    <p className="text-xs">Anytime/3 Days</p>
+                    <p className="text-xs">Anytime/4 Days</p>
                 </div>
 
                 <Separator variant="tertiary" orientation="vertical" />
