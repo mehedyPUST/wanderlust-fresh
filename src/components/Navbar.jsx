@@ -1,8 +1,37 @@
+
+"use client"
+import { authClient } from '@/lib/auth-client';
+import { Avatar, Button } from '@heroui/react';
+import { router } from 'better-auth/api';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+
+
 import React from 'react';
 
 const Navbar = () => {
+
+    const {
+        data: session,
+
+    } = authClient.useSession()
+
+    const user = session?.user
+
+    const router = useRouter();
+    const handleSignOut = async () => {
+        await authClient.signOut({
+            fetchOptions: {
+                onSuccess: () => {
+                    router.push("/login");
+                    // redirect to login page
+                },
+            },
+        });
+    }
+
     return (
         <nav className='sticky top-0 flex justify-between p-5 bg-white shadow-md z-50'>
             <ul className='flex gap-3 '>
@@ -28,12 +57,38 @@ const Navbar = () => {
                 <li>
                     <Link href={"profile"}> Profile </Link>
                 </li>
-                <li>
-                    <Link href={"/login"}> Login </Link>
-                </li>
-                <li>
-                    <Link href={"/signup"}> Sign up </Link>
-                </li>
+
+                {user ? <>
+
+                    <li>
+
+                        <Avatar>
+                            <Avatar.Image alt="John Doe" src={user?.image} />
+                            <Avatar.Fallback>{user.name.charAt(0)}</Avatar.Fallback>
+                        </Avatar>
+
+                    </li>
+                    <li>
+                        <Button onClick={handleSignOut} variant='danger' className={'rounded-none'}>
+                            Logout
+                        </Button>
+                    </li>
+                </> :
+                    <>
+                        <li>
+                            <Link href={"/login"}> Login </Link>
+                        </li>
+                        <li>
+                            <Link href={"/signup"}> Sign up </Link>
+                        </li>
+
+                    </>
+
+
+
+
+
+                }
             </ul>
         </nav>
     );

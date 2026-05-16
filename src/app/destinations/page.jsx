@@ -7,7 +7,7 @@ const DestinationPage = async () => {
     console.log(destinations)
     return (
         <div className='w-11/12 mx-auto'>
-            <h1>All Destinations</h1>
+            <h1>All Destinations : {destinations.length}</h1>
 
             <div className='grid grid-cols-3 gap-5 md:gap-10'>
                 {

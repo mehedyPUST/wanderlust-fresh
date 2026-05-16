@@ -1,3 +1,6 @@
+import { DeleteAlert } from "@/components/DeleteAlert";
+import { EditModal } from "@/components/EditModal";
+import { Button } from "@heroui/react";
 import Image from "next/image";
 import { FaRegCalendar } from "react-icons/fa6";
 import { LuMapPin } from "react-icons/lu";
@@ -13,6 +16,13 @@ const DestinationDetailsPage = async ({ params }) => {
 
     return (
         <div className="w-11/12 mx-auto">
+            <div className="flex justify-end">
+                <EditModal destination={destination}>
+
+                </EditModal>
+                <DeleteAlert destination={destination}></DeleteAlert>
+            </div>
+
             <Image
                 className="w-full h-100 object-cover"
                 alt={destinationName}
