@@ -19,6 +19,7 @@ import { useState } from "react";
 import { GrGoogle } from "react-icons/gr";
 import { MdEmail, MdLock } from "react-icons/md";
 import { Eye, EyeOff } from "lucide-react";
+import { FcGoogle } from "react-icons/fc";
 
 export default function SignInPage() {
     const router = useRouter();
@@ -197,11 +198,9 @@ export default function SignInPage() {
                 {/* Google */}
                 <Button
                     onClick={handleGoogleSignIn}
-                    disabled={loading}
-                    className="w-full h-12 rounded-xl border border-gray-200 bg-white text-amber-500
-                    hover:bg-gray-50 transition-all font-medium"
+                    className="w-full border border-amber-200 bg-white text-gray-700 font-semibold hover:bg-amber-50 hover:border-amber-300 transition-all duration-300"
                 >
-                    <GrGoogle className="text-amber-500" />
+                    <FcGoogle />
                     Continue with Google
                 </Button>
 

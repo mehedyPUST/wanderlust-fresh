@@ -17,8 +17,9 @@ import {
 import Link from "next/link";
 import { redirect, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import { GrGoogle } from "react-icons/gr";
+
 import { MdEmail, MdLock, MdPerson, MdImage } from "react-icons/md";
+import { FcGoogle } from "react-icons/fc";
 
 export default function SignUpPage() {
     const router = useRouter()
@@ -69,18 +70,18 @@ export default function SignUpPage() {
         }
     };
 
-    // const handleGoogleSignIn = async () => {
-    //     const loadingToast = toast.loading("Redirecting to Google...");
+    const handleGoogleSignIn = async () => {
+        const loadingToast = toast.loading("Redirecting to Google...");
 
-    //     try {
-    //         await authClient.signIn.social({
-    //             provider: "google"
-    //         });
-    //     } catch (err) {
-    //         toast.dismiss(loadingToast);
-    //         toast.error("Google sign-in failed. Try again.");
-    //     }
-    // };
+        try {
+            await authClient.signIn.social({
+                provider: "google"
+            });
+        } catch (err) {
+            toast.dismiss(loadingToast);
+            toast.error("Google sign-in failed. Try again.");
+        }
+    };
     return (
         <div className="bg-linear-to-r from-amber-50 via-white to-amber-50 min-h-screen py-8 animate__animated   animate__backInDown">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -216,13 +217,13 @@ export default function SignUpPage() {
                             </div>
 
                             {/* Google Sign In Button */}
-                            {/* <Button
+                            <Button
                                 onClick={handleGoogleSignIn}
                                 className="w-full border border-amber-200 bg-white text-gray-700 font-semibold hover:bg-amber-50 hover:border-amber-300 transition-all duration-300"
                             >
-                                <GrGoogle className="text-red-500" />
+                                <FcGoogle />
                                 Sign Up with Google
-                            </Button> */}
+                            </Button>
 
                             {/* Sign In Link */}
                             <p className="text-center text-sm text-gray-600 mt-6">

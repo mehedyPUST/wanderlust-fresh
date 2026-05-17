@@ -13,11 +13,7 @@ import React from 'react';
 
 const Navbar = () => {
 
-    const {
-        data: session,
-
-    } = authClient.useSession()
-
+    const { data: session } = authClient.useSession()
     const user = session?.user
 
     const router = useRouter();
@@ -63,7 +59,7 @@ const Navbar = () => {
                     <li>
 
                         <Avatar>
-                            <Avatar.Image alt="John Doe" src={user?.image} />
+                            <Avatar.Image referrerPolicy='no-referrer' alt="John Doe" src={user?.image} />
                             <Avatar.Fallback>{user.name.charAt(0)}</Avatar.Fallback>
                         </Avatar>
 

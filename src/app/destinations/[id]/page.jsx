@@ -1,3 +1,4 @@
+import BookingCard from "@/components/BookingCard";
 import { DeleteAlert } from "@/components/DeleteAlert";
 import { EditModal } from "@/components/EditModal";
 import { Button } from "@heroui/react";
@@ -31,26 +32,33 @@ const DestinationDetailsPage = async ({ params }) => {
                 width={800}
             />
 
-            <div className="flex justify-between gap-10">
-                <div className="p-2">
-                    <div className="flex items-center gap-1">
-                        <LuMapPin /> <span>{country}</span>
-                    </div>
-                    <div className="flex justify-between ">
-                        <div>
+            <div className="flex justify-between">
+
+                <div className="flex justify-between gap-10">
+                    <div className="p-2">
+                        <div className="flex items-center gap-1">
+                            <LuMapPin /> <span>{country}</span>
+                        </div>
+                        <div className="flex justify-between ">
                             <div>
-                                <h2 className="text-xl font-bold">{destinationName}</h2>
-                            </div>
-                            <div className="flex gap-1 items-center">
-                                <FaRegCalendar /> {duration}
+                                <div>
+                                    <h2 className="text-xl font-bold">{destinationName}</h2>
+                                </div>
+                                <div className="flex gap-1 items-center">
+                                    <FaRegCalendar /> {duration}
+                                </div>
                             </div>
                         </div>
+
+                        <h1 className="mt-10 text-2xl font-bold">Overview</h1>
+
+                        <p className="max-w-6xl">{description}</p>
                     </div>
-
-                    <h1 className="mt-10 text-2xl font-bold">Overview</h1>
-
-                    <p className="max-w-6xl">{description}</p>
                 </div>
+
+                <BookingCard destination={destination}></BookingCard>
+
+
             </div>
         </div>
     );
